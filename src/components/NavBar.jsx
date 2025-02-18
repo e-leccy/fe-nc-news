@@ -10,6 +10,11 @@ function NavBar () {
             </Link>
             
             <button>Topics</button>
+
+            <Link to="/login">
+            <button>Login</button>
+            </Link>
+
             <button>Profile</button>
         </ul>
         </>
