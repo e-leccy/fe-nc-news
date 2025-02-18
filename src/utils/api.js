@@ -42,9 +42,6 @@ export const updateArticle = (article_id, vote) => {
     .patch(`/articles/${article_id}`, { inc_votes: vote })
     .then((response) => {
       console.log("Voted!");
-    })
-    .catch((error) => {
-      console.log(error);
     });
 };
 
