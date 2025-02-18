@@ -4,11 +4,13 @@ import { getSingleArticle } from "../utils/api"
 import CommentList from "./CommentList"
 import LikeButton from "./LikeButton"
 import moment from "moment"
+import AddComment from "./AddComment"
 
 
 function SingleArticle () {
     const [article, setArticle] = useState({})
     const [loading, setLoading] = useState(true)
+    const [commentsUpdate, setCommentsUpdate] = useState(false)
 
 const {article_id} = useParams()
 
@@ -39,7 +41,8 @@ return (
     </div>
     
     <LikeButton article={article}/>
-    <CommentList article_id={article_id} />
+    <AddComment article_id={article_id} setCommentsUpdate={setCommentsUpdate}/>
+    <CommentList article_id={article_id} commentsUpdate={commentsUpdate}/>
     </>
 )
 
