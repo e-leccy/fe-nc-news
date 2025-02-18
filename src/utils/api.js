@@ -25,3 +25,14 @@ export const getSingleArticle = (article_id) => {
       console.log(error);
     });
 };
+
+export const getCommentsByArticle = (article_id) => {
+  return newsApi
+    .get(`/articles/${article_id}/comments`)
+    .then((response) => {
+      return response.data.comments;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
