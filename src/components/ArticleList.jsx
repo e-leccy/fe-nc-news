@@ -21,7 +21,7 @@ function ArticleList() {
         <>
         <ul>
             {articles.map((article) => {
-                return <li>
+                return <li key={article.article_id}>
                     <ArticleCard article={article}/>
                 </li>
             })}
