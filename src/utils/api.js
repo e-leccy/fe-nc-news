@@ -36,3 +36,14 @@ export const getCommentsByArticle = (article_id) => {
       console.log(error);
     });
 };
+
+export const updateArticle = (article_id, vote) => {
+  return newsApi
+    .patch(`/articles/${article_id}`, { inc_votes: vote })
+    .then((response) => {
+      console.log("Voted!");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

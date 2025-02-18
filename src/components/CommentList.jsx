@@ -22,7 +22,7 @@ function CommentList ({article_id}) {
         <>
         <ul>
             {comments.map((comment) => {
-                return <li>
+                return <li key={comment.comment_id}>
                     <CommentCard comment={comment} />
                 </li>
             })}

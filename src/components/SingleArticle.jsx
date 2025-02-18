@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getSingleArticle } from "../utils/api"
 import CommentList from "./CommentList"
+import LikeButton from "./LikeButton"
 
 
 function SingleArticle () {
@@ -32,10 +33,11 @@ return (
     <p>{article.body}</p>
     <p>Topic: {article.topic}</p>
     <p>Comments: {article.comment_count}</p>
-    <p>Votes:{article.votes} </p>
+    
     </div>
     
-    <CommentList article_id={article_id}/>
+    <LikeButton article={article}/>
+    <CommentList article_id={article_id} />
     </>
 )
 
