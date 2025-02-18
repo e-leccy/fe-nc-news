@@ -42,8 +42,13 @@ export const updateArticle = (article_id, vote) => {
     .patch(`/articles/${article_id}`, { inc_votes: vote })
     .then((response) => {
       console.log("Voted!");
-    })
-    .catch((error) => {
-      console.log(error);
+    });
+};
+
+export const postComment = (article_id, commentData) => {
+  return newsApi
+    .post(`/articles/${article_id}/comments`, commentData)
+    .then((response) => {
+      console.log("posted", response.data.comment);
     });
 };

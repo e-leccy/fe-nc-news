@@ -3,11 +3,14 @@ import { useParams } from "react-router-dom"
 import { getSingleArticle } from "../utils/api"
 import CommentList from "./CommentList"
 import LikeButton from "./LikeButton"
+import moment from "moment"
+import AddComment from "./AddComment"
 
 
 function SingleArticle () {
     const [article, setArticle] = useState({})
     const [loading, setLoading] = useState(true)
+    const [commentsUpdate, setCommentsUpdate] = useState(false)
 
 const {article_id} = useParams()
 
@@ -25,10 +28,11 @@ if (loading) {
 
 return (
     <>
+    
     <div className="article">
     <h2>{article.title}</h2>
     <h3>Author: {article.author}</h3>
-    <p>Created at: {article.created_at}</p>
+    <p>Posted: {moment(article.created_at).format("MMMM Do YYYY, hh:mm a")}</p>
     <img src={article.article_img_url}/>
     <p>{article.body}</p>
     <p>Topic: {article.topic}</p>
@@ -37,7 +41,8 @@ return (
     </div>
     
     <LikeButton article={article}/>
-    <CommentList article_id={article_id} />
+    <AddComment article_id={article_id} setCommentsUpdate={setCommentsUpdate}/>
+    <CommentList article_id={article_id} commentsUpdate={commentsUpdate}/>
     </>
 )
 

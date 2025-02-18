@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getCommentsByArticle } from "../utils/api"
 import CommentCard from "./CommentCard"
 
-function CommentList ({article_id}) {
+function CommentList ({article_id, commentsUpdate}) {
     const [comments, setComments] = useState([]) 
     const [loading, setLoading] = useState(true)
 
@@ -12,7 +12,7 @@ function CommentList ({article_id}) {
             setComments(result)
             setLoading(false)
         })
-    }, [])
+    }, [commentsUpdate])
 
     if (loading) {
         return <p>Loading...</p>

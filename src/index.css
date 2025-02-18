@@ -122,3 +122,13 @@ img {
 h1 {
   color: black
 }
+
+Form {
+  padding: 30px;
+}
+
+.form-input {
+  padding: 10px;
+}
+
+.comment-box {}
