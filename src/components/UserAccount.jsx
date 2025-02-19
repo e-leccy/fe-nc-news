@@ -7,7 +7,7 @@ export const UserAccountProvider = ({children}) => {
 
 
 return (
-    <UserAccount.Provider value={{loggedInUser}}>
+    <UserAccount.Provider value={{loggedInUser, setLoggedInUser}}>
         {children}
     </UserAccount.Provider>
 )

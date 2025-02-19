@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getUsers } from "../utils/api"
 import UserCard from "./UserCard"
+import UserLoginForm from "./UserLoginForm"
 
 function Users () {
     const [users, setUsers] = useState([])
@@ -20,6 +21,7 @@ function Users () {
 
     return (
         <>
+        <UserLoginForm users={users}/>
         <ul>
         {users.map((user) => {
             return <li key={user.username}>
