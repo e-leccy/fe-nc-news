@@ -4,9 +4,9 @@ const newsApi = axios.create({
   baseURL: "https://nc-news-j3jt.onrender.com/api",
 });
 
-export const getArticles = () => {
+export const getArticles = (topic) => {
   return newsApi
-    .get("/articles")
+    .get("/articles", { params: { topic } })
     .then((response) => {
       return response.data.articles;
     })
@@ -53,6 +53,17 @@ export const getSingleUser = (username) => {
     .get(`/users/${username}`)
     .then((response) => {
       return response.data.user;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const getTopics = () => {
+  return newsApi
+    .get("/topics")
+    .then((response) => {
+      return response.data.topics;
     })
     .catch((error) => {
       console.log(error);
