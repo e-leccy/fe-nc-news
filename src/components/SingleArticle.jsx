@@ -33,7 +33,7 @@ return (
     <h2>{article.title}</h2>
     <h3>Author: {article.author}</h3>
     <p>Posted: {moment(article.created_at).format("MMMM Do YYYY, hh:mm a")}</p>
-    <img src={article.article_img_url}/>
+    <img src={article.article_img_url} alt="aticle image"/>
     <p>{article.body}</p>
     <p>Topic: {article.topic}</p>
     <p>Comments: {article.comment_count}</p>
@@ -42,7 +42,7 @@ return (
     
     <LikeButton article={article}/>
     <AddComment article_id={article_id} setCommentsUpdate={setCommentsUpdate}/>
-    <CommentList article_id={article_id} commentsUpdate={commentsUpdate}/>
+    <CommentList article_id={article_id} commentsUpdate={commentsUpdate} setCommentsUpdate={setCommentsUpdate}/>
     </>
 )
 

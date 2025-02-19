@@ -15,6 +15,7 @@ function AddCommentForm({article_id, setCommentsUpdate}) {
 
     function handleSubmit(event){
     event.preventDefault()
+    setCommentsUpdate(false)
     setPosting(true)
     postComment(article_id, commentToAdd)
     .then((response) => {
