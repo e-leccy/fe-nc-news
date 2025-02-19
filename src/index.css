@@ -142,3 +142,7 @@ Form {
   min-width: 30%;
 
 }
+
+.topic-card {
+  border: 1px solid black;
+}

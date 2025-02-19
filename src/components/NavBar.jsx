@@ -4,7 +4,7 @@ import { UserAccount } from "./UserAccount"
 
 
 function NavBar () {
-    const {loggedInUser, setLoggedInUser} = useContext(UserAccount)
+    const {loggedInUser} = useContext(UserAccount)
 
     return (
         <>
@@ -13,7 +13,9 @@ function NavBar () {
                 <button>Home</button>
             </Link>
             
-            <button>Topics</button>
+            <Link to="/topics">
+                <button>Topics</button>
+            </Link>
 
             {!loggedInUser && (<Link to="/users">
                 <button>Login</button>
