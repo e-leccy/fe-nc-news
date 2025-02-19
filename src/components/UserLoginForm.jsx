@@ -19,7 +19,7 @@ function UserLoginForm ({users}) {
         event.preventDefault()
         setSearching(true)
         const userExist = users.some(user => user.username === selectedUser.username)
-        console.log(userExist)
+        
         
         if (userExist) {
             setLoggedInUser(selectedUser.username)            

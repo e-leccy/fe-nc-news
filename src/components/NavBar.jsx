@@ -15,9 +15,13 @@ function NavBar () {
             
             <button>Topics</button>
 
-            <Link to="/users">
+            {!loggedInUser && (<Link to="/users">
+                <button>Login</button>
+            </Link>)}
+
+            {loggedInUser && (<Link to="/users">
                 <button>Users</button>
-            </Link>
+            </Link>)}
 
             {loggedInUser && (<Link to={`/users/${loggedInUser}`}>
                     <button>{loggedInUser}</button>

@@ -71,6 +71,12 @@ export const postComment = (article_id, commentData) => {
   return newsApi
     .post(`/articles/${article_id}/comments`, commentData)
     .then((response) => {
-      console.log("posted", response.data.comment);
+      console.log("Posted!");
     });
+};
+
+export const deleteComment = (comment_id) => {
+  return newsApi.delete(`/comments/${comment_id}`).then((response) => {
+    console.log("Deleted!");
+  });
 };

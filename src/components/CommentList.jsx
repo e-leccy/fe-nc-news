@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getCommentsByArticle } from "../utils/api"
 import CommentCard from "./CommentCard"
 
-function CommentList ({article_id, commentsUpdate}) {
+function CommentList ({article_id, commentsUpdate, setCommentsUpdate}) {
     const [comments, setComments] = useState([]) 
     const [loading, setLoading] = useState(true)
 
@@ -23,7 +23,7 @@ function CommentList ({article_id, commentsUpdate}) {
         <ul>
             {comments.map((comment) => {
                 return <li key={comment.comment_id}>
-                    <CommentCard comment={comment} />
+                    <CommentCard comment={comment} setCommentsUpdate={setCommentsUpdate} />
                 </li>
             })}
         </ul>

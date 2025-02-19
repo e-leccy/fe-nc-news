@@ -42,7 +42,7 @@ return (
     
     <LikeButton article={article}/>
     <AddComment article_id={article_id} setCommentsUpdate={setCommentsUpdate}/>
-    <CommentList article_id={article_id} commentsUpdate={commentsUpdate}/>
+    <CommentList article_id={article_id} commentsUpdate={commentsUpdate} setCommentsUpdate={setCommentsUpdate}/>
     </>
 )
 
