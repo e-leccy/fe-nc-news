@@ -1,9 +1,12 @@
 import { useState } from "react"
 import { postComment } from "../utils/api"
 import CommentCard from "./CommentCard"
+import { UserAccount } from "./UserAccount"
+import { useContext } from "react"
 
 function AddCommentForm({article_id, setCommentsUpdate}) {
-    const [commentToAdd, setCommentToAdd] = useState({username: "", body: ""})
+    const {loggedInUser, setLoggedInUser} = useContext(UserAccount)
+    const [commentToAdd, setCommentToAdd] = useState({username: loggedInUser, body: ""})
     const [errorMsg, setErrorMsg] = useState(false)
     const [posting, setPosting] = useState(false)
 
@@ -22,7 +25,7 @@ function AddCommentForm({article_id, setCommentsUpdate}) {
         <CommentCard comment={commentToAdd} />
         setCommentsUpdate(true)
         setPosting(false)
-        setCommentToAdd({username: "", body: ""})
+        setCommentToAdd({body: ""})
         setErrorMsg(false)
     })
     .catch((error) => {
@@ -39,12 +42,10 @@ function AddCommentForm({article_id, setCommentsUpdate}) {
 return (
     <>
 <form>
-    <label htmlFor="username">Username:</label>
-    <input type="text" placeholder='username' id="username" name="username" required
-    value={commentToAdd.username} onChange={handleChange} />
+    
 
-    <label htmlFor="comment">Comment:</label>
-    <input type="text" placeholder='comment' id="comment" name="body" required
+    
+    <input type="text" placeholder='comment' className="comment-box" name="body" required
     value={commentToAdd.body} onChange={handleChange} />
 
     <button type="submit" onClick={handleSubmit} >Submit</button>
