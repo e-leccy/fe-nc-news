@@ -37,6 +37,28 @@ export const getCommentsByArticle = (article_id) => {
     });
 };
 
+export const getUsers = () => {
+  return newsApi
+    .get("/users")
+    .then((response) => {
+      return response.data.users;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const getSingleUser = (username) => {
+  return newsApi
+    .get(`/users/${username}`)
+    .then((response) => {
+      return response.data.user;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
 export const updateArticle = (article_id, vote) => {
   return newsApi
     .patch(`/articles/${article_id}`, { inc_votes: vote })

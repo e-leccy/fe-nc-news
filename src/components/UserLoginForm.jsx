@@ -6,8 +6,9 @@ function UserLoginForm ({users}) {
     const [selectedUser, setSelectedUser] = useState({})
     const { setLoggedInUser, loggedInUser} = useContext(UserAccount)
 
-    function handleChange() {
-
+    function handleChange(event) {
+        const value = event.target.value
+        
     }
 
     function handleSubmit(event){
