@@ -136,3 +136,9 @@ Form {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.comment-box {
+  border: 1px solid black;
+  min-width: 30%;
+
+}
