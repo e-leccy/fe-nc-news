@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { getArticles, getTopics } from "../utils/api";
 import { useParams } from "react-router-dom";
 import TopicCard from "./TopicCard";
+import ErrorPage from "./ErrorPage";
 
-function TopicsList() {
-  const [topics, setTopics] = useState([]);
+function TopicsList({ topics, setTopics }) {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -13,10 +14,14 @@ function TopicsList() {
       setTopics(result);
       setLoading(false);
     });
-  }, []);
+  }, [setTopics]);
 
   if (loading) {
     return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <ErrorPage />;
   }
 
   return (

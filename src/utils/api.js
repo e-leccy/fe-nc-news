@@ -9,21 +9,13 @@ export const getArticles = ({ topic, sort_by, order }) => {
     .get("/articles", { params: { topic, sort_by, order } })
     .then((response) => {
       return response.data.articles;
-    })
-    .catch((error) => {
-      console.log(error);
     });
 };
 
 export const getSingleArticle = (article_id) => {
-  return newsApi
-    .get(`/articles/${article_id}`)
-    .then((response) => {
-      return response.data.article;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  return newsApi.get(`/articles/${article_id}`).then((response) => {
+    return response.data.article;
+  });
 };
 
 export const getCommentsByArticle = (article_id) => {
@@ -60,14 +52,9 @@ export const getSingleUser = (username) => {
 };
 
 export const getTopics = () => {
-  return newsApi
-    .get("/topics")
-    .then((response) => {
-      return response.data.topics;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  return newsApi.get("/topics").then((response) => {
+    return response.data.topics;
+  });
 };
 
 export const updateArticle = (article_id, vote) => {

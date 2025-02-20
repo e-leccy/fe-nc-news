@@ -1,14 +1,14 @@
 import ArticleCard from "./ArticleCard";
 import { useEffect, useState } from "react";
 import { getArticles } from "../utils/api";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import ErrorPage from "./ErrorPage";
 
-function ArticleList() {
+function ArticleList({ topics }) {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
-  const path = location.pathname;
 
   const topic = searchParams.get("topic");
   const sort_by = searchParams.get("sort_by");
@@ -27,15 +27,35 @@ function ArticleList() {
   }
 
   useEffect(() => {
+    if (topic) {
+      const topicExist = topics.some((t) => t.slug === topic);
+
+      if (!topicExist) {
+        setError(true);
+        setLoading(false);
+        return;
+      }
+    }
+
     setLoading(true);
-    getArticles({ topic, sort_by, order }).then((result) => {
-      setArticles(result);
-      setLoading(false);
-    });
+    getArticles({ topic, sort_by, order })
+      .then((result) => {
+        setArticles(result);
+        setLoading(false);
+        setError(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        setError(true);
+      });
   }, [topic, sort_by, order]);
 
   if (loading) {
     return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <ErrorPage />;
   }
 
   return (
