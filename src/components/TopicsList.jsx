@@ -5,15 +5,20 @@ import TopicCard from "./TopicCard";
 
 function TopicsList() {
   const [topics, setTopics] = useState([]);
-  const [displayTopic, setDisplayTopic] = useState();
-
-  const { topic } = useParams();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     getTopics().then((result) => {
       setTopics(result);
+      setLoading(false);
     });
   }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <>
       <ul>
