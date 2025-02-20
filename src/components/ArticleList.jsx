@@ -10,11 +10,15 @@ function ArticleList() {
   const location = useLocation();
   const path = location.pathname;
 
-  const [isVisible, setIsVisible] = useState(path === "/" ? true : false);
-
   const topic = searchParams.get("topic");
   const sort_by = searchParams.get("sort_by");
   const order = searchParams.get("order");
+
+  function setSortCondition(condition) {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("sort_by", condition);
+    setSearchParams(newParams);
+  }
 
   function setSortOrder(direction) {
     const newParams = new URLSearchParams(searchParams);
@@ -36,32 +40,28 @@ function ArticleList() {
 
   return (
     <>
-      {isVisible ? (
-        <select
-          name="sorting"
-          onChange={(event) => {
-            setSearchParams(`sort_by=${event.target.value}`);
-          }}
-        >
-          <option>Sort by...</option>
-          <option value="created_at">Date</option>
-          <option value="votes">Votes</option>
-          <option value="comment_count">Comments</option>
-        </select>
-      ) : null}
+      <select
+        name="sorting"
+        onChange={(event) => {
+          setSortCondition(event.target.value);
+        }}
+      >
+        <option>Sort by...</option>
+        <option value="created_at">Date</option>
+        <option value="votes">Votes</option>
+        <option value="comment_count">Comments</option>
+      </select>
 
-      {isVisible ? (
-        <select
-          name="ordering"
-          onChange={(event) => {
-            setSortOrder(event.target.value);
-          }}
-        >
-          <option>Order by...</option>
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
-        </select>
-      ) : null}
+      <select
+        name="ordering"
+        onChange={(event) => {
+          setSortOrder(event.target.value);
+        }}
+      >
+        <option>Order by...</option>
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+      </select>
 
       <ul>
         {articles.map((article) => {
