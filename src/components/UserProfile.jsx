@@ -1,35 +1,42 @@
-import { useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
-import { getSingleUser } from "../utils/api"
-import UserCard from "./UserCard"
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getSingleUser } from "../utils/api";
+import { useNavigate } from "react-router-dom";
+import UserCard from "./UserCard";
 
 function UserProfile() {
-    const [profile, setProfile] = useState({})
-    const [loading, setLoading] = useState(true)
+  const [profile, setProfile] = useState({});
+  const [loading, setLoading] = useState(true);
 
-    const {username} = useParams()
+  const { username } = useParams();
 
-    useEffect(() => {
-        setLoading(true)
-        getSingleUser(username).then((result) => {
-            setProfile(result)
-            setLoading(false)
-        })
-    }, [])
+  const navigate = useNavigate();
 
-    if (loading) {
-        return <p>Loading...</p>
-    }
+  useEffect(() => {
+    setLoading(true);
+    getSingleUser(username).then((result) => {
+      setProfile(result);
+      setLoading(false);
+    });
+  }, []);
 
-    return(
-        <>
-        <UserCard user={profile} />
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
-        <Link to={"/users"}>
-        <button>View All Users</button>
-        </Link>
-        </>
-    )
+  return (
+    <>
+      <UserCard user={profile} />
+
+      <button
+        onClick={() => {
+          navigate("/users");
+        }}
+      >
+        View All Users
+      </button>
+    </>
+  );
 }
 
-export default UserProfile
+export default UserProfile;
