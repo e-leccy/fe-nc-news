@@ -10,8 +10,11 @@ import Users from "./components/Users";
 import UserProfile from "./components/UserProfile";
 import TopicsList from "./components/TopicsList";
 import ArticleList from "./components/ArticleList";
+import ErrorPage from "./components/ErrorPage";
+import { useState } from "react";
 
 function App() {
+  const [topics, setTopics] = useState([]);
   return (
     <>
       <UserAccountProvider>
@@ -23,8 +26,12 @@ function App() {
           <Route path="/login" element={<UserLoginForm />} />
           <Route path="/users" element={<Users />} />
           <Route path="/users/:username" element={<UserProfile />} />
-          <Route path="/topics" element={<TopicsList />} />
-          <Route path="/articles" element={<ArticleList />} />
+          <Route
+            path="/topics"
+            element={<TopicsList setTopics={setTopics} topics={topics} />}
+          />
+          <Route path="/articles" element={<ArticleList topics={topics} />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </UserAccountProvider>
     </>
