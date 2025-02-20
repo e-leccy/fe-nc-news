@@ -1,37 +1,58 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 import { UserAccount } from "./UserAccount";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
   const { loggedInUser } = useContext(UserAccount);
+  const navigate = useNavigate();
 
   return (
     <>
       <ul className="nav">
-        <Link to="/">
-          <button>Home</button>
-        </Link>
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Home
+        </button>
 
-        <Link to="/topics">
-          <button>Topics</button>
-        </Link>
+        <button
+          onClick={() => {
+            navigate("/topics");
+          }}
+        >
+          Topics
+        </button>
 
         {!loggedInUser && (
-          <Link to="/users">
-            <button>Login</button>
-          </Link>
+          <button
+            onClick={() => {
+              navigate("/users");
+            }}
+          >
+            Login
+          </button>
         )}
 
         {loggedInUser && (
-          <Link to="/users">
-            <button>Users</button>
-          </Link>
+          <button
+            onClick={() => {
+              navigate("/users");
+            }}
+          >
+            Users
+          </button>
         )}
 
         {loggedInUser && (
-          <Link to={`/users/${loggedInUser}`}>
-            <button>{loggedInUser}</button>
-          </Link>
+          <button
+            onClick={() => {
+              navigate(`/users/${loggedInUser}`);
+            }}
+          >
+            {loggedInUser}
+          </button>
         )}
       </ul>
     </>
