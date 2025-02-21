@@ -1,6 +1,7 @@
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 function ArticleCard({ article }) {
   return (
@@ -12,6 +13,10 @@ function ArticleCard({ article }) {
           </Link>
           <ListGroup variant="flush">
             <ListGroup.Item>Author: {article.author}</ListGroup.Item>
+            <ListGroup.Item>
+              Posted:{" "}
+              {moment(article.created_at).format("MMMM Do YYYY, hh:mm a")}
+            </ListGroup.Item>
             <ListGroup.Item>Comments: {article.comment_count}</ListGroup.Item>
             <ListGroup.Item>Votes:{article.votes}</ListGroup.Item>
           </ListGroup>

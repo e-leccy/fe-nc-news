@@ -7,7 +7,7 @@ function NavBar() {
   const navigate = useNavigate();
 
   return (
-    <>
+    <nav>
       <ul id="nav">
         <button
           onClick={() => {
@@ -55,7 +55,7 @@ function NavBar() {
           </button>
         )}
       </ul>
-    </>
+    </nav>
   );
 }
 

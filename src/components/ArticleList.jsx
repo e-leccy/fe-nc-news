@@ -64,28 +64,32 @@ function ArticleList({ topics }) {
 
   return (
     <>
-      <select
-        name="sorting"
-        onChange={(event) => {
-          setSort(event.target.value);
-        }}
-      >
-        <option>Sort by...</option>
-        <option value="created_at">Date</option>
-        <option value="votes">Votes</option>
-        <option value="comment_count">Comments</option>
-      </select>
+      <label>
+        <select
+          name="sorting"
+          onChange={(event) => {
+            setSort(event.target.value);
+          }}
+        >
+          <option>Sort by...</option>
+          <option value="created_at">Date</option>
+          <option value="votes">Votes</option>
+          <option value="comment_count">Comments</option>
+        </select>
+      </label>
 
-      <select
-        name="ordering"
-        onChange={(event) => {
-          setSort(event.target.value);
-        }}
-      >
-        <option>Order by...</option>
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
-      </select>
+      <label>
+        <select
+          name="ordering"
+          onChange={(event) => {
+            setSort(event.target.value);
+          }}
+        >
+          <option>Order by...</option>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </label>
 
       <ul className="list">
         {articles.map((article) => {
