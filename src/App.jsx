@@ -12,6 +12,7 @@ import TopicsList from "./components/TopicsList";
 import ArticleList from "./components/ArticleList";
 import ErrorPage from "./components/ErrorPage";
 import { useState } from "react";
+import Footer from "./components/Footer";
 
 function App() {
   const [topics, setTopics] = useState([]);
@@ -33,6 +34,7 @@ function App() {
           <Route path="/articles" element={<ArticleList topics={topics} />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
+        <Footer />
       </UserAccountProvider>
     </>
   );

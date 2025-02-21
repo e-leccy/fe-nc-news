@@ -85,6 +85,10 @@ button:focus-visible {
   }
 }
 
+.only-on-dark {
+  display: none;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     background-color: #262626;
@@ -112,6 +116,16 @@ button:focus-visible {
   h3 {
     color: whitesmoke
   }
+
+  .only-on-dark {
+    display: inline-block
+  }
+
+  .only-on-light {
+    display: none
+  }
+
+
 }
 
 
@@ -252,4 +266,17 @@ Select {
 
 .profile-pic {
   max-width: 50%
+}
+
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 10vw;
+  min-height: 5vh;
+}
+
+.footer-pic {
+  width: 40px;
+  margin: 10px
 }

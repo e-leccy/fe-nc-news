@@ -47,7 +47,10 @@ function SingleArticle() {
         <p>
           Posted: {moment(article.created_at).format("MMMM Do YYYY, hh:mm a")}
         </p>
-        <img src={article.article_img_url} alt="aticle image" />
+        <img
+          src={article.article_img_url}
+          alt={`image for article ${article.title}`}
+        />
         <p>{article.body}</p>
         <p>Topic: {article.topic}</p>
         <p>Comments: {article.comment_count}</p>
