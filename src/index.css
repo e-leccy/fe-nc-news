@@ -85,6 +85,35 @@ button:focus-visible {
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: #262626;
+    color: whitesmoke
+  }
+
+  a {
+    color: #72B4FF
+  }
+
+  a:hover {
+    color: paleturquoise;
+  }
+
+  button {
+    background-color: grey
+  }
+
+  select {
+    color: blue;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: whitesmoke
+  }
+}
+
 
 
 #nav {
