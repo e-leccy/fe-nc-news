@@ -87,7 +87,7 @@ function ArticleList({ topics }) {
         <option value="desc">Descending</option>
       </select>
 
-      <ul>
+      <ul className="list">
         {articles.map((article) => {
           return (
             <li key={article.article_id}>

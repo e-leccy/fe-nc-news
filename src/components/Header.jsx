@@ -1,11 +1,5 @@
 function Header() {
-  return (
-    <img
-      src="../src/assets/NC-NEWS-2-18-2025.png"
-      alt="NC News logo"
-      id="header"
-    />
-  );
+  return <h1>NC News</h1>;
 }
 
 export default Header;

@@ -1,14 +1,12 @@
-import { Button } from "bootstrap"
-import ArticleList from "./ArticleList"
+import { Button } from "bootstrap";
+import ArticleList from "./ArticleList";
 
-function HomePage(){
-
-    return (
-        <>
-        <button>Add Article</button>
-        <ArticleList />
-        </>
-    )
+function HomePage() {
+  return (
+    <>
+      <ArticleList />
+    </>
+  );
 }
 
-export default HomePage
+export default HomePage;

@@ -34,6 +34,19 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: black;
+}
+
+h2 {
+  font-size: 2.2em;
+  line-height: 1.2;
+  color: black;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 2;
+  color: black;
 }
 
 button {
@@ -72,6 +85,8 @@ button:focus-visible {
   }
 }
 
+
+
 #nav {
   position: sticky;
   top: 0;
@@ -99,7 +114,7 @@ ul {
 
 img {
   min-width: 25%;
-  max-width: 50%;
+  max-width: 100%;
   justify-content: center;
   align-items: center;
 }
@@ -121,10 +136,6 @@ img {
   justify-content: center;
   align-items: stretch;
   align-content: stretch;
-}
-
-h1 {
-  color: black
 }
 
 Form {
@@ -181,4 +192,35 @@ Select {
 
 #header {
   max-width: 300px;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+  list-style-type: none;
+  padding: 0;
+}
+
+@media (min-width: 600px) {
+
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.list li {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-pic {
+  max-width: 50%
 }
