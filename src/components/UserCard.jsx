@@ -15,7 +15,7 @@ function UserCard({ user }) {
       <Link to={`/users/${user.username}`} onClick={handleClick}>
         <h2>{user.username}</h2>
       </Link>
-      <img src={user.avatar_url} alt="avatar image" />
+      <img src={user.avatar_url} alt="avatar image" className="profile-pic" />
     </div>
   );
 }

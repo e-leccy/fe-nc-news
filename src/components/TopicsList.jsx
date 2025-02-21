@@ -26,7 +26,7 @@ function TopicsList({ topics, setTopics }) {
 
   return (
     <>
-      <ul>
+      <ul className="list">
         {topics.map((topic) => {
           return (
             <li key={topic.slug}>
