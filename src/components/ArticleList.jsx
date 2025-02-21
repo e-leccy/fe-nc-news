@@ -14,16 +14,20 @@ function ArticleList({ topics }) {
   const sort_by = searchParams.get("sort_by");
   const order = searchParams.get("order");
 
-  function setSortCondition(condition) {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set("sort_by", condition);
-    setSearchParams(newParams);
-  }
-
-  function setSortOrder(direction) {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.set("order", direction);
-    setSearchParams(newParams);
+  function setSort(condition) {
+    if (
+      (condition === "votes") |
+      (condition === "comment_count") |
+      (condition === "created_at")
+    ) {
+      const newParams = new URLSearchParams(searchParams);
+      newParams.set("sort_by", condition);
+      setSearchParams(newParams);
+    } else {
+      const newParams = new URLSearchParams(searchParams);
+      newParams.set("order", condition);
+      setSearchParams(newParams);
+    }
   }
 
   useEffect(() => {
@@ -63,7 +67,7 @@ function ArticleList({ topics }) {
       <select
         name="sorting"
         onChange={(event) => {
-          setSortCondition(event.target.value);
+          setSort(event.target.value);
         }}
       >
         <option>Sort by...</option>
@@ -75,7 +79,7 @@ function ArticleList({ topics }) {
       <select
         name="ordering"
         onChange={(event) => {
-          setSortOrder(event.target.value);
+          setSort(event.target.value);
         }}
       >
         <option>Order by...</option>
