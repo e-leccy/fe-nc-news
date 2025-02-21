@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState, useContext } from "react";
+import { Link, useParams } from "react-router-dom";
 import { getSingleArticle } from "../utils/api";
 import CommentList from "./CommentList";
 import LikeButton from "./LikeButton";
 import moment from "moment";
 import AddComment from "./AddComment";
 import ErrorPage from "./ErrorPage";
+import { UserAccount } from "./UserAccount";
 
 function SingleArticle() {
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [commentsUpdate, setCommentsUpdate] = useState(false);
+  const { loggedInUser, setLoggedInUser } = useContext(UserAccount);
 
   const { article_id } = useParams();
 
@@ -56,6 +58,12 @@ function SingleArticle() {
         article_id={article_id}
         setCommentsUpdate={setCommentsUpdate}
       />
+      {!loggedInUser && (
+        <p>
+          <Link to="/users">Login</Link> to leave a comment
+        </p>
+      )}
+
       <CommentList
         article_id={article_id}
         commentsUpdate={commentsUpdate}
