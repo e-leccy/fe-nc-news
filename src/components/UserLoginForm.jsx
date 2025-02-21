@@ -38,7 +38,7 @@ function UserLoginForm({ users }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="username">Username: </label>
         <input
           type="text"
           placeholder="username"

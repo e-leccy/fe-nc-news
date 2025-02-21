@@ -49,7 +49,7 @@ function AddCommentForm({ article_id, setCommentsUpdate }) {
         <input
           type="text"
           placeholder="comment"
-          className="comment-box"
+          id="comment-box"
           name="body"
           required
           value={commentToAdd.body}

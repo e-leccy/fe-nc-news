@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function TopicCard({ topic }) {
   return (
     <>
-      <div className="topic-card">
+      <div id="topic-card">
         <Card style={{ width: "18rem" }}>
           <Link to={`/articles?topic=${topic.slug}`}>
             <Card.Header>{topic.slug}</Card.Header>
