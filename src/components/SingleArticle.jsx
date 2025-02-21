@@ -39,7 +39,7 @@ function SingleArticle() {
 
   return (
     <>
-      <div className="article">
+      <div id="article">
         <h2>{article.title}</h2>
         <h3>Author: {article.author}</h3>
         <p>

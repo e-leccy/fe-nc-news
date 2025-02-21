@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function ArticleCard({ article }) {
   return (
     <>
-      <div className="article-card">
+      <div id="article-card">
         <Card style={{ width: "18rem" }}>
           <Link to={`/articles/${article.article_id}`}>
             <Card.Header>Title: {article.title}</Card.Header>

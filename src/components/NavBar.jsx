@@ -8,7 +8,7 @@ function NavBar() {
 
   return (
     <>
-      <ul className="nav">
+      <ul id="nav">
         <button
           onClick={() => {
             navigate("/");

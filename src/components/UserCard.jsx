@@ -11,7 +11,7 @@ function UserCard({ user }) {
   }
 
   return (
-    <div className="user">
+    <div id="user">
       <Link to={`/users/${user.username}`} onClick={handleClick}>
         <h2>{user.username}</h2>
       </Link>
