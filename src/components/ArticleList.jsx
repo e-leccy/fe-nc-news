@@ -6,6 +6,7 @@ import ErrorPage from "./ErrorPage";
 
 function ArticleList({ topics }) {
   const [articles, setArticles] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -13,6 +14,7 @@ function ArticleList({ topics }) {
   const topic = searchParams.get("topic");
   const sort_by = searchParams.get("sort_by");
   const order = searchParams.get("order");
+  const p = parseInt(searchParams.get("p")) || 1;
 
   function setSort(condition) {
     if (
@@ -30,6 +32,12 @@ function ArticleList({ topics }) {
     }
   }
 
+  function goToPage(newPage) {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("p", newPage);
+    setSearchParams(newParams);
+  }
+
   useEffect(() => {
     if (topic) {
       const topicExist = topics.some((t) => t.slug === topic);
@@ -42,9 +50,10 @@ function ArticleList({ topics }) {
     }
 
     setLoading(true);
-    getArticles({ topic, sort_by, order })
+    getArticles({ topic, sort_by, order, p })
       .then((result) => {
-        setArticles(result);
+        setArticles(result.articles);
+        setTotalCount(result.total_count);
         setLoading(false);
         setError(false);
       })
@@ -52,7 +61,7 @@ function ArticleList({ topics }) {
         setLoading(false);
         setError(true);
       });
-  }, [topic, sort_by, order]);
+  }, [topic, sort_by, order, p]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -100,6 +109,11 @@ function ArticleList({ topics }) {
           );
         })}
       </ul>
+
+      <button onClick={() => goToPage(p - 1)} disabled={p === 1}>
+        Previous
+      </button>
+      <button onClick={() => goToPage(p + 1)}>Next</button>
     </>
   );
 }
