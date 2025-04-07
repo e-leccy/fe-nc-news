@@ -4,11 +4,11 @@ const newsApi = axios.create({
   baseURL: "https://nc-news-j3jt.onrender.com/api",
 });
 
-export const getArticles = ({ topic, sort_by, order }) => {
+export const getArticles = ({ topic, sort_by, order, p, limit }) => {
   return newsApi
-    .get("/articles", { params: { topic, sort_by, order } })
+    .get("/articles", { params: { topic, sort_by, order, p, limit: 6 } })
     .then((response) => {
-      return response.data.articles;
+      return response.data;
     });
 };
 
