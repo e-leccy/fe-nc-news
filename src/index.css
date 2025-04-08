@@ -280,3 +280,11 @@ Select {
   width: 40px;
   margin: 10px
 }
+
+.pagination {
+  padding-bottom: 10px;
+}
+
+.number-button {
+  margin: 5px;
+}

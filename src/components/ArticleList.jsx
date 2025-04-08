@@ -63,6 +63,14 @@ function ArticleList({ topics }) {
       });
   }, [topic, sort_by, order, p]);
 
+  const totalPages = Math.ceil(totalCount / 6);
+
+  const pageNumbers = [];
+
+  for (let i = 1; i < totalPages; i++) {
+    pageNumbers.push(i);
+  }
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -110,10 +118,20 @@ function ArticleList({ topics }) {
         })}
       </ul>
 
-      <button onClick={() => goToPage(p - 1)} disabled={p === 1}>
-        Previous
-      </button>
-      <button onClick={() => goToPage(p + 1)}>Next</button>
+      <div className="pagination">
+        {pageNumbers.map((pageNumber) => {
+          return (
+            <button
+              className="number-button"
+              key={pageNumber}
+              onClick={() => goToPage(pageNumber)}
+              disabled={p === pageNumber}
+            >
+              {pageNumber}
+            </button>
+          );
+        })}
+      </div>
     </>
   );
 }
