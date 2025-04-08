@@ -18,9 +18,9 @@ export const getSingleArticle = (article_id) => {
   });
 };
 
-export const getCommentsByArticle = (article_id) => {
+export const getCommentsByArticle = (article_id, p, limit) => {
   return newsApi
-    .get(`/articles/${article_id}/comments`)
+    .get(`/articles/${article_id}/comments`, { params: { p, limit: 6 } })
     .then((response) => {
       return response.data.comments;
     })

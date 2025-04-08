@@ -69,6 +69,7 @@ function SingleArticle() {
 
       <CommentList
         article_id={article_id}
+        comment_count={article.comment_count}
         commentsUpdate={commentsUpdate}
         setCommentsUpdate={setCommentsUpdate}
       />
