@@ -67,7 +67,7 @@ function ArticleList({ topics }) {
 
   const pageNumbers = [];
 
-  for (let i = 1; i < totalPages; i++) {
+  for (let i = 1; i <= totalPages; i++) {
     pageNumbers.push(i);
   }
 
