@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getArticles, getTopics } from "../utils/api";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import TopicCard from "./TopicCard";
 import ErrorPage from "./ErrorPage";
+import { UserAccount } from "./UserAccount";
+import AddTopic from "./AddTopic";
 
 function TopicsList({ topics, setTopics }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [topicsUpdate, setTopicsUpdate] = useState(false);
+  const { loggedInUser, setLoggedInUser } = useContext(UserAccount);
 
   useEffect(() => {
     setLoading(true);
@@ -14,7 +18,7 @@ function TopicsList({ topics, setTopics }) {
       setTopics(result);
       setLoading(false);
     });
-  }, [setTopics]);
+  }, [setTopics, topicsUpdate]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -26,6 +30,14 @@ function TopicsList({ topics, setTopics }) {
 
   return (
     <>
+      {!loggedInUser && (
+        <p>
+          <Link to="/users">Login</Link> to add a new topic
+        </p>
+      )}
+
+      <AddTopic setTopicsUpdate={setTopicsUpdate} />
+
       <ul className="list">
         {topics.map((topic) => {
           return (
